@@ -1,0 +1,72 @@
+<link rel="import" href="polymer/polymer/polymer.html">
+
+<dom-module id="row-card">
+  <template>
+    <style>
+      :host
+      {
+        display: block;
+      }
+
+      rt
+      {
+        display: block;
+        font-size: 20px;
+        height: 10px;
+        transform: translateY(30px);
+      }
+
+      .kanji-wrap
+      {
+        display: table-cell;
+      }
+
+      .text-box
+      {
+        vertical-align: middle;
+        font-size: 6em;
+        padding: 0 40px 0 40px;
+
+      }
+
+      .kanji-box
+      {
+        width: 100%;
+        display: inline-block;
+        height: 200px;
+        white-space: nowrap;
+      }
+
+      .hiragana-box
+      {
+        display: table-cell;
+        font-size: 4em;
+      }
+    </style>
+
+    <div class="kanji-wrap">
+      <div class="text-box kanji-box"><ruby>制<rt>せい</rt></ruby>服</div>
+    </div>
+    <div class="text-box hiragana-box">せいふく</div>
+
+  </template>
+
+  <script>
+    class rowCard extends Polymer.Element
+    {
+      static get is()
+      {
+        return "row-card";
+      }
+
+      static get properties()
+      {
+        return {
+
+        };
+      }
+    }
+
+    customElements.define(rowCard.is,rowCard);
+  </script>
+</dom-module>
