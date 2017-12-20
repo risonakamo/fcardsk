@@ -24,7 +24,7 @@
       .text-box
       {
         vertical-align: middle;
-        font-size: 6em;
+        font-size: 8em;
         padding: 0 40px 0 40px;
 
       }
@@ -37,17 +37,27 @@
         white-space: nowrap;
       }
 
-      .hiragana-box
+      #hiragana-box
       {
         display: table-cell;
+        width: 100%;
         font-size: 4em;
+        cursor: default;
+        user-select: none;
+        color: transparent;
+        transition: background-color .2s,color .2s;
+      }
+
+      #hiragana-box.unhide
+      {
+        color: black;
       }
     </style>
 
     <div class="kanji-wrap">
       <div class="text-box kanji-box"><ruby>制<rt>せい</rt></ruby>服</div>
     </div>
-    <div class="text-box hiragana-box">せいふく</div>
+    <div id="hiragana-box" class="text-box" on-click="unhide" style="background-color:[[hideColour]]">せいふく</div>
 
   </template>
 
@@ -64,6 +74,18 @@
         return {
 
         };
+      }
+
+      constructor()
+      {
+        super();
+        this.hideColour="red";
+      }
+
+      unhide()
+      {
+        this.$["hiragana-box"].classList.add("unhide");
+        this.$["hiragana-box"].style.backgroundColor="transparent";
       }
     }
 
