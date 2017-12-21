@@ -2,10 +2,13 @@ window.onload=main;
 
 var _cards=[];
 var _cardZone;
+var _mainColour;
 
 function main()
 {
     _cardZone=document.querySelector(".card-zone");
+    _mainColour=randint(0,359);
+
     getCard("l18-kanji",(d)=>{
         d=d.boxes;
 
@@ -57,7 +60,7 @@ function array2Card(data)
 {
     if (data.length==2)
     {
-        return new rowCard(data[0],data[1],"red");
+        return new rowCard(data[0],data[1],"#"+new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex());
     }
 
     var kanji=data[0].split("");
@@ -70,7 +73,7 @@ function array2Card(data)
         kanji[rubyIndex]=`<ruby>${kanji[rubyIndex]}<rt>${rubyData[x+1]}</rt></ruby>`;
     }
 
-    return new rowCard(kanji.join(""),data[1],"red");
+    return new rowCard(kanji.join(""),data[1],"#"+new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex());
 }
 
 function randomiseArray(array)
