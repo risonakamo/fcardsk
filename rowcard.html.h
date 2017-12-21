@@ -6,7 +6,7 @@ class rowCard
     /*-- data --*/
     string kanjiText; //saved string data of card for resetting
     string hiraganaText;
-    string savedColour;
+    string savedColour; //used as bound-string time one time
     int marked;
 
     bound-string hideColour; //colour of hide panel, html bounded
