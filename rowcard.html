@@ -36,7 +36,7 @@
         display: inline-block;
       }
 
-      .menu-slide
+      .mark-row
       {
         height: 200px;
         vertical-align: top;
@@ -53,6 +53,7 @@
       .text-box
       {
         padding: 0 40px 0 40px;
+        box-sizing: border-box;
       }
 
       .box-wrap.kanji-box .text-box
@@ -99,7 +100,7 @@
           </div>
         </div>
 
-        <div class="menu-slide row-panel">
+        <div class="mark-row row-panel">
           mark
         </div>
       </div>
@@ -131,6 +132,7 @@
         this.savedColour=colour;
         this.kanjiText=kanji;
         this.hiraganaText=hiragana;
+        this.marked=0;
       }
 
       ready()
@@ -138,6 +140,7 @@
         super.ready();
 
         this.setMode(0);
+        Polymer.Gestures.setTouchAction(this.$["slide-main"],'pan-y pinch-zoom');
       }
 
       //unhide the element
@@ -206,11 +209,39 @@
       {
         if (e.detail.state=="end")
         {
+          if (e.detail.dx>.4*this.offsetWidth)
+          {
+            console.log("meaning");
+          }
+
+          else if (e.detail.dx<-.4*this.offsetWidth)
+          {
+            this.toggleMarked();
+          }
+
           this.$["slide-main"].style.transform=`translateX(0px)`;
           return;
         }
 
-        this.$["slide-main"].style.transform=`translateX(${e.detail.dx}px)`;
+        if (e.detail.dx>50 || e.detail.dx<-50)
+        {
+          this.$["slide-main"].style.transform=`translateX(${e.detail.dx}px)`;
+        }
+      }
+
+      toggleMarked()
+      {
+        if (this.marked)
+        {
+          this.$["slide-main"].style.color="black";
+          this.marked=0;
+        }
+
+        else
+        {
+          this.$["slide-main"].style.color=this.savedColour;
+          this.marked=1;
+        }
       }
     }
 
