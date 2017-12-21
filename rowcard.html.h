@@ -3,7 +3,7 @@ class rowCard
     rowCard();
     ready();
 
-    string kanjiText;
+    string kanjiText; //saved string data of card for resetting
     string hiraganaText;
     string savedColour;
 
@@ -13,7 +13,6 @@ class rowCard
     element-id hide-box;
     element-id top-text;
     element-id bot-text;
-
 
     void unhide();
     void setMode(int mode);

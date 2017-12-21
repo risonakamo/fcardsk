@@ -41,6 +41,8 @@ function resetCards()
         _cards[x].resetHide();
         _cardZone.appendChild(_cards[x]);
     }
+
+    window.scrollTo(0,0);
 }
 
 function getCard(card,callback)
@@ -96,4 +98,12 @@ function randomiseArray(array)
 function randint(min,max)
 {
     return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+function setModes(mode)
+{
+    for (var x=0,l=_cards.length;x<l;x++)
+    {
+        _cards[x].setMode(mode);
+    }
 }
