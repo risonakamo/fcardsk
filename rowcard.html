@@ -1,4 +1,5 @@
 <link rel="import" href="polymer/polymer/polymer.html">
+<link rel="import" href="polymer/polymer/lib/mixins/gesture-event-listeners.html">
 
 <dom-module id="row-card">
   <template>
@@ -6,6 +7,7 @@
       :host
       {
         display: block;
+        font-size: 0;
       }
 
       rt
@@ -14,6 +16,31 @@
         font-size: 20px;
         height: 10px;
         transform: translateY(30px);
+      }
+
+      .row-wrap
+      {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .row-slide
+      {
+        width: 200%;
+        transition: transform .1s;
+      }
+
+      .row-panel
+      {
+        width: 50%;
+        display: inline-block;
+      }
+
+      .menu-slide
+      {
+        height: 200px;
+        vertical-align: top;
+        font-size: 45px;
       }
 
       .box-wrap
@@ -25,17 +52,16 @@
 
       .text-box
       {
-        font-size: 8em;
         padding: 0 40px 0 40px;
-
       }
 
-      .box-wrap.kanji-box div
+      .box-wrap.kanji-box .text-box
       {
+        display: inline-block;
         width: 100%;
         height: 200px;
+        font-size: 125px;
         box-sizing: border-box;
-        display: inline-block;
         white-space: nowrap;
       }
 
@@ -45,9 +71,9 @@
         user-select: none;
       }
 
-      .box-wrap.hiragana-box div
+      .box-wrap.hiragana-box .text-box
       {
-        font-size: 4em;
+        font-size: 65px;
       }
 
       #hide-box.hidden
@@ -57,16 +83,24 @@
       }
     </style>
 
-    <div id="box-main" on-click="unhide">
-      <div id="other-box" class="box-wrap kanji-box">
-        <div id="top-text" class="text-box">
-          [[topText]]
-        </div>
-      </div>
+    <div class="row-wrap">
+      <div id="slide-main" class="row-slide" on-track="dragslide">
+        <div class="row-panel" on-click="unhide">
+          <div id="other-box" class="box-wrap kanji-box">
+            <div id="top-text" class="text-box">
+              [[topText]]
+            </div>
+          </div>
 
-      <div id="hide-box" class="box-wrap hidden hiragana-box" style="background-color:[[hideColour]]">
-        <div id="bot-text" class="text-box">
-          [[botText]]
+          <div id="hide-box" class="box-wrap hidden hiragana-box" style="background-color:[[hideColour]]">
+            <div id="bot-text" class="text-box">
+              [[botText]]
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-slide row-panel">
+          mark
         </div>
       </div>
     </div>
@@ -74,7 +108,7 @@
   </template>
 
   <script>
-    class rowCard extends Polymer.Element
+    class rowCard extends Polymer.GestureEventListeners(Polymer.Element)
     {
       static get is()
       {
@@ -166,6 +200,17 @@
           this.$["bot-text"].innerHTML=this.kanjiText;
           break;
         }
+      }
+
+      dragslide(e)
+      {
+        if (e.detail.state=="end")
+        {
+          this.$["slide-main"].style.transform=`translateX(0px)`;
+          return;
+        }
+
+        this.$["slide-main"].style.transform=`translateX(${e.detail.dx}px)`;
       }
     }
 

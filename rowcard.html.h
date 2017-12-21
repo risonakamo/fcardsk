@@ -9,7 +9,7 @@ class rowCard
 
     bound-string hideColour; //colour of hide panel, html bounded
 
-    element-id box-main;
+    element-id slide-main;
     element-id other-box;
     element-id hide-box;
     element-id top-text;
