@@ -15,6 +15,8 @@ class rowCard
     element-id top-text;
     element-id bot-text;
 
-    void unhide();
+    void-handler unhide();
     void setMode(int mode);
+
+    void-handler dragslide(event e);
 }
