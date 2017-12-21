@@ -88,14 +88,14 @@
         };
       }
 
-      constructor()
+      constructor(kanji,hiragana,colour)
       {
         super();
 
         //things to be initialised
-        this.hideColour="red";
-        this.kanjiText=`<ruby>制<rt>せい</rt></ruby>服`;
-        this.hiraganaText=`せいふく`;
+        this.hideColour=colour;
+        this.kanjiText=kanji;
+        this.hiraganaText=hiragana;
       }
 
       ready()
