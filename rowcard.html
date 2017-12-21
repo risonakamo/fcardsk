@@ -89,13 +89,13 @@
         <div class="row-panel" on-click="unhide">
           <div id="other-box" class="box-wrap kanji-box">
             <div id="top-text" class="text-box">
-              [[topText]]
+
             </div>
           </div>
 
           <div id="hide-box" class="box-wrap hidden hiragana-box" style="background-color:[[hideColour]]">
             <div id="bot-text" class="text-box">
-              [[botText]]
+
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@
         super.ready();
 
         this.setMode(0);
-        Polymer.Gestures.setTouchAction(this.$["slide-main"],'pan-y pinch-zoom');
+        Polymer.Gestures.setTouchAction(this.$["slide-main"],"pan-y pinch-zoom");
       }
 
       //unhide the element
@@ -209,6 +209,8 @@
       {
         if (e.detail.state=="end")
         {
+          //right now swipes are set to trigger if dragged
+          //40% of the length of the entire rowcard
           if (e.detail.dx>.4*this.offsetWidth)
           {
             console.log("meaning");
@@ -223,6 +225,7 @@
           return;
         }
 
+        //right now set only to start drag animation after dragging 50px
         if (e.detail.dx>50 || e.detail.dx<-50)
         {
           this.$["slide-main"].style.transform=`translateX(${e.detail.dx}px)`;
