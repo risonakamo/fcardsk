@@ -1,5 +1,6 @@
 rowCard[] _cards;
 element _cardZone;
+int _mainColour;
 
 void main();
 
