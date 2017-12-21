@@ -94,6 +94,7 @@
 
         //things to be initialised
         this.hideColour=colour;
+        this.savedColour=colour;
         this.kanjiText=kanji;
         this.hiraganaText=hiragana;
       }
@@ -109,7 +110,13 @@
       unhide()
       {
         this.$["hide-box"].classList.remove("hidden");
-        this.$["hide-box"].style.backgroundColor="transparent";
+        this.hideColour="transparent";
+      }
+
+      resetHide()
+      {
+        this.$["hide-box"].classList.add("hidden");
+        this.hideColour=this.savedColour;
       }
 
       /*set top/bot text state of element.

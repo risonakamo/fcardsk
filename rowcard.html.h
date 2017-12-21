@@ -5,6 +5,7 @@ class rowCard
 
     string kanjiText;
     string hiraganaText;
+    string savedColour;
 
     bound-string hideColour; //colour of hide panel, html bounded
 

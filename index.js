@@ -1,16 +1,39 @@
 window.onload=main;
 
+var _cards=[];
+var _cardZone;
+
 function main()
 {
+    _cardZone=document.querySelector(".card-zone");
     getCard("l18-kanji",(d)=>{
         d=d.boxes;
-        var cardZone=document.querySelector(".card-zone");
+
         for (var x=0,l=d.length;x<l;x++)
         {
-            console.log(d[x]);
-            cardZone.appendChild(array2Card(d[x]));
+            _cards.push(array2Card(d[x]));
+        }
+
+        randomiseArray(_cards);
+
+        for (var x=0,l=_cards.length;x<l;x++)
+        {
+            _cardZone.appendChild(_cards[x]);
         }
     });
+}
+
+function resetCards()
+{
+    _cardZone.innerHTML="";
+
+    randomiseArray(_cards);
+
+    for (var x=0,l=_cards.length;x<l;x++)
+    {
+        _cards[x].resetHide();
+        _cardZone.appendChild(_cards[x]);
+    }
 }
 
 function getCard(card,callback)
@@ -48,4 +71,22 @@ function array2Card(data)
     }
 
     return new rowCard(kanji.join(""),data[1],"red");
+}
+
+function randomiseArray(array)
+{
+    var t;
+    var ri;
+    for (var x=array.length-1;x>0;x--)
+    {
+        ri=randint(0,x);
+        t=array[x];
+        array[x]=array[ri];
+        array[ri]=t;
+    }
+}
+
+function randint(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1))+min;
 }
