@@ -229,8 +229,8 @@
           return;
         }
 
-        //right now set only to start drag animation after dragging 50px
-        if (e.detail.dx>50 || e.detail.dx<-50)
+        //right now set only to start drag animation after dragging a certain number of px
+        if (e.detail.dx>=80 || e.detail.dx<=-80)
         {
           this.$["slide-main"].style.transform=`translateX(${e.detail.dx}px)`;
         }

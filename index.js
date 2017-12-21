@@ -8,10 +8,13 @@ function main()
 {
     _cardZone=document.querySelector(".card-zone");
     _mainColour=randint(0,359);
+    document.head.insertAdjacentHTML("beforeend",`<meta name="theme-color" content="${"#"+new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex()}">`);
 
     var args=window.location.hash.split("#");
     if (args.length>=2)
     {
+        document.title=`fcardsk - ${args[1]}`;
+
         getCard(args[1],(d)=>{
             d=d.boxes;
 
