@@ -9,21 +9,25 @@ function main()
     _cardZone=document.querySelector(".card-zone");
     _mainColour=randint(0,359);
 
-    getCard("l18-kanji",(d)=>{
-        d=d.boxes;
+    var args=window.location.hash.split("#");
+    if (args.length>=2)
+    {
+        getCard(args[1],(d)=>{
+            d=d.boxes;
 
-        for (var x=0,l=d.length;x<l;x++)
-        {
-            _cards.push(array2Card(d[x]));
-        }
+            for (var x=0,l=d.length;x<l;x++)
+            {
+                _cards.push(array2Card(d[x]));
+            }
 
-        randomiseArray(_cards);
+            randomiseArray(_cards);
 
-        for (var x=0,l=_cards.length;x<l;x++)
-        {
-            _cardZone.appendChild(_cards[x]);
-        }
-    });
+            for (var x=0,l=_cards.length;x<l;x++)
+            {
+                _cardZone.appendChild(_cards[x]);
+            }
+        });
+    }
 }
 
 function resetCards()
@@ -45,7 +49,7 @@ function getCard(card,callback)
     r.open("GET",`cards/${card}.json`);
 
     r.onreadystatechange=()=>{
-        if (r.readyState==4)
+        if (r.readyState==4 && r.status==200)
         {
             callback(JSON.parse(r.response));
         }
