@@ -33,15 +33,15 @@
       .box-wrap.kanji-box div
       {
         width: 100%;
-        display: inline-block;
         height: 200px;
+        box-sizing: border-box;
+        display: inline-block;
         white-space: nowrap;
       }
 
       .box-wrap.hiragana-box
       {
         width: 100%;
-        cursor: default;
         user-select: none;
       }
 
@@ -53,6 +53,7 @@
       #hide-box.hidden
       {
         color: transparent;
+        cursor: default;
       }
     </style>
 
