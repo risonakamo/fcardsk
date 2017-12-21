@@ -20,6 +20,7 @@
       {
         display: table-cell;
         vertical-align: middle;
+        transition: background-color .2s,color .2s;
       }
 
       .text-box
@@ -42,8 +43,6 @@
         width: 100%;
         cursor: default;
         user-select: none;
-        color: transparent;
-        transition: background-color .2s,color .2s;
       }
 
       .box-wrap.hiragana-box div
@@ -51,22 +50,22 @@
         font-size: 4em;
       }
 
-      #hide-box.unhide
+      #hide-box.hidden
       {
-        color: black;
+        color: transparent;
       }
     </style>
 
     <div class="box-hold">
       <div id="other-box" class="box-wrap kanji-box">
-        <div class="text-box">
-          <ruby>制<rt>せい</rt></ruby>服
+        <div id="top-text" class="text-box">
+          [[topText]]
         </div>
       </div>
 
-      <div id="hide-box" class="box-wrap hiragana-box" style="background-color:[[hideColour]]" on-click="unhide">
-        <div class="text-box">
-          せいふく
+      <div id="hide-box" class="box-wrap hidden hiragana-box" style="background-color:[[hideColour]]" on-click="unhide">
+        <div id="bot-text" class="text-box">
+          [[botText]]
         </div>
       </div>
     </div>
@@ -91,18 +90,74 @@
       constructor()
       {
         super();
+
+        //things to be initialised
         this.hideColour="red";
+        this.kanjiText=`<ruby>制<rt>せい</rt></ruby>服`;
+        this.hiraganaText=`せいふく`;
       }
 
+      ready()
+      {
+        super.ready();
+
+        this.setMode(0);
+      }
+
+      //unhide the element
       unhide()
       {
-        this.$["hide-box"].classList.add("unhide");
+        this.$["hide-box"].classList.remove("hidden");
         this.$["hide-box"].style.backgroundColor="transparent";
       }
 
-      flipBox()
+      /*set top/bot text state of element.
+        give mode values:
+        0: random
+        1: kanji first
+        2: hiragan first*/
+      setMode(mode)
       {
+        switch (mode)
+        {
+          case 0:
+          if (Math.floor(Math.random()*2))
+          {
+            this.setMode(1);
+          }
 
+          else
+          {
+            this.setMode(2);
+          }
+          break;
+
+          case 1:
+          var obox=this.$["other-box"];
+          obox.classList.remove("hiragana-box");
+          obox.classList.add("kanji-box");
+
+          var hbox=this.$["hide-box"];
+          hbox.classList.remove("kanji-box");
+          hbox.classList.add("hiragana-box");
+
+          this.$["top-text"].innerHTML=this.kanjiText;
+          this.$["bot-text"].innerHTML=this.hiraganaText;
+          break;
+
+          case 2:
+          var hbox=this.$["hide-box"];
+          hbox.classList.remove("hiragana-box");
+          hbox.classList.add("kanji-box");
+
+          var obox=this.$["other-box"];
+          obox.classList.remove("kanji-box");
+          obox.classList.add("hiragana-box");
+
+          this.$["top-text"].innerHTML=this.hiraganaText;
+          this.$["bot-text"].innerHTML=this.kanjiText;
+          break;
+        }
       }
     }
 
