@@ -137,6 +137,7 @@
         this.kanjiText=kanji;
         this.hiraganaText=hiragana;
         this.marked=0;
+        this.dontSlide=0;
       }
 
       ready()
@@ -213,6 +214,8 @@
       {
         if (e.detail.state=="end")
         {
+          this.dontSlide=0;
+
           //right now swipes are set to trigger if dragged
           //40% of the length of the entire rowcard
           if (e.detail.dx>.4*this.offsetWidth)
@@ -229,9 +232,14 @@
           return;
         }
 
-        //right now set only to start drag animation after dragging a certain number of px
-        if ((e.detail.dx>=80 || e.detail.dx<=-80) && (e.detail.dy>=-30 && e.detail.dy<=30))
+        if ((e.detail.dy>=20 || e.detail.dy<=-20) && !this.dontSlide)
         {
+          this.dontSlide=1;
+        }
+
+        if ((e.detail.dx>=30 || e.detail.dx<=-30) && this.dontSlide<=0)
+        {
+          this.dontSlide=-1;
           this.$["slide-main"].style.transform=`translateX(${e.detail.dx}px)`;
         }
       }

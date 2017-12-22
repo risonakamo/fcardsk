@@ -8,6 +8,7 @@ class rowCard
     string hiraganaText;
     string savedColour; //used as bound-string time one time
     int marked;
+    int dontSlide;
 
     bound-string hideColour; //colour of hide panel, html bounded
 
