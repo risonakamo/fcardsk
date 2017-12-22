@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+body
+{
+    margin: 0;
+}
+
+.dropzone
+{
+    width: 200px;
+    height: 200px;
+    background-color: purple;
+}
