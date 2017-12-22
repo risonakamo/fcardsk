@@ -26,13 +26,14 @@
 
       .row-slide
       {
-        width: 200%;
+        width: 300%;
+        margin-left: -98%;
         transition: transform .1s;
       }
 
       .row-panel
       {
-        width: 50%;
+        width: 33%;
         display: inline-block;
       }
 
@@ -56,6 +57,7 @@
 
       .text-box
       {
+        vertical-align: top;
         padding: 0 40px 0 40px;
         box-sizing: border-box;
       }
@@ -86,10 +88,21 @@
         color: transparent;
         cursor: default;
       }
+
+      .meaning-box
+      {
+        font-size: 55px;
+        text-align: right;
+        padding-left: 10%;
+      }
     </style>
 
     <div class="row-wrap">
       <div id="slide-main" class="row-slide" on-track="dragslide">
+        <div class="text-box row-panel meaning-box">
+          [[meaning]]
+        </div>
+
         <div class="row-panel" on-click="unhide">
           <div id="other-box" class="box-wrap kanji-box">
             <div id="top-text" class="text-box">
@@ -218,12 +231,7 @@
 
           //right now swipes are set to trigger if dragged
           //40% of the length of the entire rowcard
-          if (e.detail.dx>.4*this.offsetWidth)
-          {
-            console.log("meaning");
-          }
-
-          else if (e.detail.dx<-.4*this.offsetWidth)
+          if (e.detail.dx<-.4*this.offsetWidth)
           {
             this.toggleMarked();
           }
