@@ -3,12 +3,16 @@ window.onload=main;
 var _cards=[];
 var _cardZone;
 var _mainColour;
+var _currentMode=0;
 
 function main()
 {
     _cardZone=document.querySelector(".card-zone");
     _mainColour=randint(0,359);
-    document.head.insertAdjacentHTML("beforeend",`<meta name="theme-color" content="${"#"+new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex()}">`);
+    var uiColour="#"+new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex();
+    document.head.insertAdjacentHTML("beforeend",`<meta name="theme-color" content="${uiColour}">`);
+
+    initialiseMenu(uiColour);
 
     var args=window.location.hash.split("#");
     if (args.length>=2)
@@ -42,6 +46,7 @@ function resetCards()
     for (var x=0,l=_cards.length;x<l;x++)
     {
         _cards[x].resetHide();
+        _cards[x].setMode(_currentMode);
         _cardZone.appendChild(_cards[x]);
     }
 
@@ -109,4 +114,30 @@ function setModes(mode)
     {
         _cards[x].setMode(mode);
     }
+}
+
+function initialiseMenu(uiColour)
+{
+    var menubar=document.querySelector(".menu-bar");
+    var buttons=menubar.querySelectorAll(".button");
+
+    menubar.style.backgroundColor=uiColour;
+
+    buttons[0].addEventListener("click",(e)=>{
+        resetCards();
+    });
+
+    buttons[1].addEventListener("click",(e)=>{
+        _currentMode++;
+
+        if (_currentMode>2)
+        {
+            _currentMode=0;
+        }
+
+        for (var x=0,l=_cards.length;x<l;x++)
+        {
+            _cards[x].setMode(_currentMode);
+        }
+    });
 }

@@ -12,3 +12,26 @@ body
     font-family: "nscj-reg";
     user-select: none;
 }
+
+.card-zone
+{
+    padding-bottom: 100px;
+}
+
+.menu-bar
+{
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    background-color: white;
+}
+
+.menu-bar .button
+{
+    display: inline-block;
+    width: 33%;
+    height: 100%;
+    font-size: 30px;
+    color: white;
+}
