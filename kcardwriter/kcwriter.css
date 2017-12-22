@@ -9,5 +9,13 @@ body
 {
     width: 200px;
     height: 200px;
-    background-color: purple;
+    background-color: #78FB21;
+    border: 2.5px dashed transparent;
+    transition: background-color .2s,border-color .2s;
+}
+
+.dropzone.dragover
+{
+    background-color: transparent;
+    border-color: #78FB21;
 }
