@@ -7,11 +7,12 @@ function main()
 
 function setupDropZone()
 {
-    var dropzone=document.querySelector(".dropzone");
+    var dropzone=document.querySelector(".drop-zone");
+    var slider=document.querySelector(".out-slider");
 
     dropzone.addEventListener("drop",(e)=>{
         e.preventDefault();
-        dropzone.classList.remove("dragover");
+        slider.classList.remove("dragover");
 
         var datafile=e.dataTransfer.items[0].getAsFile();
         var datafileNameSplit=datafile.name.split(".");
@@ -30,11 +31,11 @@ function setupDropZone()
     });
 
     dropzone.addEventListener("dragenter",(e)=>{
-        dropzone.classList.add("dragover");
+        slider.classList.add("dragover");
     });
 
     dropzone.addEventListener("dragleave",(e)=>{
-        dropzone.classList.remove("dragover");
+        slider.classList.remove("dragover");
     });
 }
 
@@ -75,7 +76,13 @@ function readXls(datafile)
         }
 
         console.log(formatdata);
+        document.querySelector(".zones").classList.add("loaded");
     };
 
     f.readAsBinaryString(datafile);
+}
+
+function xlsloaded()
+{
+
 }
