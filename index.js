@@ -123,11 +123,8 @@ function initialiseMenu(uiColour)
 
     menubar.style.backgroundColor=uiColour;
 
+    //change random mode
     buttons[0].addEventListener("click",(e)=>{
-        resetCards();
-    });
-
-    buttons[1].addEventListener("click",(e)=>{
         _currentMode++;
 
         if (_currentMode>2)
@@ -140,4 +137,10 @@ function initialiseMenu(uiColour)
             _cards[x].setMode(_currentMode);
         }
     });
+
+    //reset cards
+    buttons[1].addEventListener("click",(e)=>{
+        resetCards();
+    });
+
 }
