@@ -30,8 +30,10 @@ body
 .menu-bar .button
 {
     display: inline-block;
+    vertical-align: top;
     width: 33%;
     height: 100%;
+    text-align: center;
     font-size: 30px;
     color: white;
 }

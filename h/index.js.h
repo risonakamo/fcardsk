@@ -3,6 +3,8 @@ element _cardZone; //card insert element
 int _mainColour; //randomised colour on startup
 int _currentMode;
 
+element _rmodeImg;
+
 void main();
 
 void initialiseMenu(string uiColour);
@@ -10,7 +12,6 @@ void initialiseMenu(string uiColour);
 /*-- card actions --*/
 //reset all cards action
 void resetCards();
-void setModes(int mode);
 
 /*-- card data handling --*/
 //load cards from given data file name, calls callback

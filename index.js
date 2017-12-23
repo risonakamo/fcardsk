@@ -5,6 +5,8 @@ var _cardZone;
 var _mainColour;
 var _currentMode=0;
 
+var _rmodeImg;
+
 function main()
 {
     _cardZone=document.querySelector(".card-zone");
@@ -150,20 +152,14 @@ function randint(min,max)
     return Math.floor(Math.random()*(max-min+1))+min;
 }
 
-function setModes(mode)
-{
-    for (var x=0,l=_cards.length;x<l;x++)
-    {
-        _cards[x].setMode(mode);
-    }
-}
-
 function initialiseMenu(uiColour)
 {
     var menubar=document.querySelector(".menu-bar");
     var buttons=menubar.querySelectorAll(".button");
 
     menubar.style.backgroundColor=uiColour;
+
+    var rmodeImg=buttons[0].querySelector("img");
 
     //change random mode
     buttons[0].addEventListener("click",(e)=>{
@@ -173,6 +169,8 @@ function initialiseMenu(uiColour)
         {
             _currentMode=0;
         }
+
+        rmodeImg.src=`img/rm${_currentMode}.png`;
 
         for (var x=0,l=_cards.length;x<l;x++)
         {
@@ -184,5 +182,4 @@ function initialiseMenu(uiColour)
     buttons[1].addEventListener("click",(e)=>{
         resetCards();
     });
-
 }
