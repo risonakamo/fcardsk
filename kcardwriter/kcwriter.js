@@ -1,10 +1,15 @@
 window.onload=main;
 
+var _jsonlink;
+
 function main()
 {
+    _jsonlink=document.querySelector(".new-text");
+
     setupDropZone();
 }
 
+//initialise drop zone related things
 function setupDropZone()
 {
     var dropzone=document.querySelector(".drop-zone");
@@ -23,7 +28,7 @@ function setupDropZone()
             return;
         }
 
-        readXls(datafile);
+        readXls(datafile,datafileNameSplit[0]);
     });
 
     dropzone.addEventListener("dragover",(e)=>{
@@ -39,7 +44,10 @@ function setupDropZone()
     });
 }
 
-function readXls(datafile)
+//read given FIle object and string name, turn it into data
+//and put it onto the button using attachData()
+//also sets loaded state
+function readXls(datafile,name)
 {
     var f=new FileReader();
     f.onload=()=>{
@@ -75,14 +83,16 @@ function readXls(datafile)
             }
         }
 
-        console.log(formatdata);
+        attachData(formatdata,name);
         document.querySelector(".zones").classList.add("loaded");
     };
 
     f.readAsBinaryString(datafile);
 }
 
-function xlsloaded()
+//prepare json download button for downloading
+function attachData(data,name)
 {
-
+    _jsonlink.href=`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify({kcards:data}))}`;
+    _jsonlink.download=`${name}.json`;
 }
