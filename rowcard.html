@@ -140,7 +140,7 @@
         };
       }
 
-      constructor(kanji,hiragana,colour)
+      constructor(kanji,hiragana,colour,meaning="")
       {
         super();
 
@@ -149,6 +149,7 @@
         this.savedColour=colour;
         this.kanjiText=kanji;
         this.hiraganaText=hiragana;
+        this.meaning=meaning;
         this.marked=0;
         this.dontSlide=0;
       }

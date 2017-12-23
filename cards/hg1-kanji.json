@@ -1,0 +1,163 @@
+{
+    "kcards": [
+        {
+            "maindata": [
+                "期待",
+                "きたい",
+                "expectation"
+            ]
+        },
+        {
+            "maindata": [
+                "期末",
+                "きまつ",
+                "end of term"
+            ]
+        },
+        {
+            "maindata": [
+                "一期",
+                "いちご",
+                "lifetime"
+            ]
+        },
+        {
+            "maindata": [
+                "学期",
+                "がっき",
+                "semester"
+            ]
+        },
+        {
+            "maindata": [
+                "今期",
+                "こんき",
+                "current term"
+            ]
+        },
+        {
+            "maindata": [
+                "最期",
+                "さいご",
+                "last life moment"
+            ],
+            "rubys": [
+                [
+                    "0",
+                    "さい"
+                ]
+            ]
+        },
+        {
+            "maindata": [
+                "面白い",
+                "おもしろい",
+                "interesting"
+            ]
+        },
+        {
+            "maindata": [
+                "真面目",
+                "まじめ",
+                "serious"
+            ]
+        },
+        {
+            "maindata": [
+                "面倒くさい",
+                "めんどうくさい",
+                "bothersome"
+            ],
+            "rubys": [
+                [
+                    "1",
+                    "どう"
+                ]
+            ]
+        },
+        {
+            "maindata": [
+                "面持ち",
+                "おももち",
+                "expression"
+            ]
+        },
+        {
+            "maindata": [
+                "面する",
+                "めんする",
+                "look out into"
+            ]
+        },
+        {
+            "maindata": [
+                "幸せ",
+                "しあわせ",
+                "happiness"
+            ]
+        },
+        {
+            "maindata": [
+                "幸運",
+                "こううん",
+                "good luck"
+            ]
+        },
+        {
+            "maindata": [
+                "幸",
+                "さち",
+                "luck"
+            ]
+        },
+        {
+            "maindata": [
+                "幸い",
+                "さいわい",
+                "fortune"
+            ]
+        },
+        {
+            "maindata": [
+                "不幸",
+                "ふこう",
+                "bad luck"
+            ]
+        },
+        {
+            "maindata": [
+                "踏む",
+                "ふむ",
+                "step on"
+            ]
+        },
+        {
+            "maindata": [
+                "踏切",
+                "ふみきり",
+                "railroad crossing"
+            ]
+        },
+        {
+            "maindata": [
+                "踏まえる",
+                "ふまえる",
+                "be based on"
+            ]
+        },
+        {
+            "maindata": [
+                "蹴る",
+                "ける",
+                "kick"
+            ]
+        },
+        {
+            "maindata": [
+                "先蹴",
+                "せんしゅう",
+                "kick off"
+            ]
+        }
+    ]
+}

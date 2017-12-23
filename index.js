@@ -19,12 +19,31 @@ function main()
     {
         document.title=`fcardsk - ${args[1]}`;
 
+        var cardsType;
         getCard(args[1],(d)=>{
-            d=d.boxes;
+            if (d.boxes)
+            {
+                cardsType=0;
+                d=d.boxes;
+            }
+
+            else if (d.kcards)
+            {
+                cardsType=1;
+                d=d.kcards;
+            }
 
             for (var x=0,l=d.length;x<l;x++)
             {
-                _cards.push(array2Card(d[x]));
+                if (cardsType)
+                {
+                    _cards.push(kcard2card(d[x]));
+                }
+
+                else
+                {
+                    _cards.push(array2Card(d[x]));
+                }
             }
 
             randomiseArray(_cards);
@@ -88,6 +107,29 @@ function array2Card(data)
     }
 
     return new rowCard(kanji.join(""),data[1],"#"+new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex());
+}
+
+function kcard2card(data)
+{
+    if (!data.rubys)
+    {
+        return new rowCard(data.maindata[0],data.maindata[1],
+            "#"+new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex(),
+            data.maindata[2]);
+    }
+
+    var kanji=data.maindata[0].split("");
+    var rubyIndex;
+
+    for (var x=0,l=data.rubys.length;x<l;x++)
+    {
+        rubyIndex=parseInt(data.rubys[x][0]);
+        kanji[rubyIndex]=`<ruby>${kanji[rubyIndex]}<rt>${data.rubys[x][1]}</rt></ruby>`;
+    }
+
+    return new rowCard(kanji.join(""),data.maindata[1],
+        "#"+new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex(),
+        data.maindata[2]);
 }
 
 function randomiseArray(array)

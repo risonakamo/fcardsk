@@ -1,6 +1,6 @@
 class rowCard
 {
-    rowCard(string kanji,string hiragan,string colour);
+    rowCard(string kanji,string hiragan,string colour,string meaning);
     ready();
 
     /*-- data --*/
