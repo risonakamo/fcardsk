@@ -77,7 +77,7 @@ function resetCards()
 function getCard(card,callback)
 {
     var r=new XMLHttpRequest();
-    r.open("GET",`cards/${card}.json`);
+    r.open("GET",`../cards/${card}.json`);
 
     r.onreadystatechange=()=>{
         if (r.readyState==4 && r.status==200)
