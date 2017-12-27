@@ -1,0 +1,32 @@
+<!-- card entry html to be used in selector.js by genentry() -->
+
+<!-- original element -->
+<a href="viewer#hg1-kanji" class="card-entry">
+  <div class="name">
+    name name
+  </div>
+
+  <div class="file-name">
+    file name file
+  </div>
+
+  <div class="kanji">
+    <div>友</div>
+    <div>達</div>
+  </div>
+</a>
+
+<!-- js gen string -->
+<a href="viewer#${data[1]}" class="card-entry" style="background-color:#${new tinycolor(`hsv(${_mainColour},${randint(40,100)},${randint(70,90)})`).toHex()}">
+  <div class="name">
+    ${data[0]}
+  </div>
+
+  <div class="file-name">
+    ${data[1]}
+  </div>
+
+  <div class="kanji">
+    ${kanjistring}
+  </div>
+</a>

@@ -12,11 +12,16 @@ body
     font-family: "nscj-reg";
 }
 
+a
+{
+    text-decoration: none;
+}
+
 .card-entry
 {
+    display: block;
     width: 100%;
     color: white;
-    background-color: red;
 }
 
 .card-entry .name
