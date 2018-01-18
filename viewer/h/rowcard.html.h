@@ -19,6 +19,7 @@ class rowCard
     element-id hide-box;
     element-id top-text;
     element-id bot-text;
+    element-id mark-box;
 
     /*-- main action functions --*/
     void-handler unhide();

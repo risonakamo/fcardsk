@@ -95,6 +95,13 @@
         text-align: right;
         padding-left: 10%;
       }
+
+      .row-panel.long-text .kanji-box .text-box
+      {
+        height: auto;
+        width: 580px;
+        white-space: normal;
+      }
     </style>
 
     <div class="row-wrap">
@@ -156,6 +163,11 @@
       ready()
       {
         super.ready();
+
+        if (this.kanjiText.length>4)
+        {
+          this.$["other-box"].parentElement.classList.add("long-text");
+        }
 
         this.setMode(0);
         Polymer.Gestures.setTouchAction(this.$["slide-main"],"pan-y pinch-zoom");
