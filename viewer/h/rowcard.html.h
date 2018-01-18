@@ -11,9 +11,7 @@ class rowCard
     int dontSlide;
     string-bound meaning;
 
-    bound-string hideColour; //colour of hide panel, html bounded
-
-    int firstModeSet
+    int firstModeSet;
 
     /*-- ids --*/
     element-id slide-main;

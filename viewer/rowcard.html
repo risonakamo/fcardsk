@@ -110,7 +110,7 @@
             </div>
           </div>
 
-          <div id="hide-box" class="box-wrap hidden hiragana-box" style="background-color:[[hideColour]]">
+          <div id="hide-box" class="box-wrap hidden hiragana-box" style="background-color:[[savedColour]]">
             <div id="bot-text" class="text-box">
 
             </div>
@@ -145,7 +145,6 @@
         super();
 
         //things to be initialised
-        this.hideColour=colour;
         this.savedColour=colour;
         this.kanjiText=kanji;
         this.hiraganaText=hiragana;
@@ -166,13 +165,13 @@
       unhide()
       {
         this.$["hide-box"].classList.remove("hidden");
-        this.hideColour="transparent";
+        this.$["hide-box"].style.backgroundColor="transparent";
       }
 
       resetHide()
       {
         this.$["hide-box"].classList.add("hidden");
-        this.hideColour=this.savedColour;
+        this.$["hide-box"].style.backgroundColor=this.savedColour;
       }
 
       /*set top/bot text state of element.
