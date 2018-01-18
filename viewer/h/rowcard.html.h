@@ -13,6 +13,8 @@ class rowCard
 
     bound-string hideColour; //colour of hide panel, html bounded
 
+    int firstModeSet
+
     /*-- ids --*/
     element-id slide-main;
     element-id other-box;
