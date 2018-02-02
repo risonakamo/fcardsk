@@ -28,7 +28,12 @@
       {
         width: 300%;
         margin-left: -98%;
-        transition: transform 100ms;
+        transition: transform 150ms;
+      }
+
+      .row-slide.sliding
+      {
+        transition-duration: 0s;
       }
 
       .row-panel
@@ -246,6 +251,7 @@
       {
         if (e.detail.state=="end")
         {
+          this.$["slide-main"].classList.remove("sliding");
           this.dontSlide=0;
 
           //right now swipes are set to trigger if dragged
@@ -267,6 +273,7 @@
         if ((e.detail.dx>=30 || e.detail.dx<=-30) && this.dontSlide<=0)
         {
           this.dontSlide=-1;
+          this.$["slide-main"].classList.add("sliding");
           this.$["slide-main"].style.transform=`translateX(${e.detail.dx}px)`;
         }
       }
