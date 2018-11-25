@@ -15,11 +15,14 @@
         ["l22 kanji","l22-kanji","記銀回夕黒用守末待残番駅説案内忘"],
         ["l23 kanji","l23-kanji","顔情怒変相横比化違輩調査果感答"],
         ["random series 1","rand1","???"],
-	["kanji nsm67","nsm67","申記例齢歳性連絡"],
-	["kanji nsm69","nsm69","届宅配希望荷換額"],
-	["kanji nsm63","nsm63","告利割倍値商支払"],
-	["kanji nsm71","nsm71","在取預衣参達勤帯"],
-	["kanji nsm75","nsm75","細戸湖船角夫苦"],
-	["kanji nsm77","nsm77","礼伺遅失汗念涙笑"]
+        ["kanji nsm67","nsm67","申記例齢歳性連絡"],
+        ["kanji nsm69","nsm69","届宅配希望荷換額"],
+        ["kanji nsm63","nsm63","告利割倍値商支払"],
+        ["kanji nsm71","nsm71","在取預衣参達勤帯"],
+        ["kanji nsm75","nsm75","細戸湖船角夫苦"],
+        ["kanji nsm77","nsm77","礼伺遅失汗念涙笑"],
+        ["kanji nsm79","nsm79","調査移難簡単感想"],
+        ["kanji nsm81","nsm81","練最適選違直復辞宿"],
+        ["kanji nsm83","nsm83","昨君結婚祝曲奥寝"]
     ]
 }
